@@ -2,7 +2,7 @@ name: Retrain model with updated dataset
 
 on:
   schedule:
-    - cron: "* 2 * * 3" # Runs every Wednesdat at 1:13 AM
+    - cron: "* 1 * * 3" # Runs every Wednesdat at 1:13 AM
 
 jobs:
   create-and-commit-file:
