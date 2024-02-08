@@ -10,7 +10,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
+      - name: Set up secret file
+        run: |
+          echo ${{ secrets.REACT_APP_CLIENT_ID }}
+          echo $${{ secrets.REACT_APP_CLIENT_SECRET }}
       - name: context
         uses: okteto/context@latest
         with:
@@ -18,10 +21,6 @@ jobs:
         env:
           REACT_APP_PUBLIC_URL: ${{ secrets.STAGING_URL }}
           REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
-      - name: Set up secret file
-        run: |
-          echo ${{ secrets.REACT_APP_CLIENT_ID }}
-          echo $${{ secrets.REACT_APP_CLIENT_SECRET }}
       - name: "Activate Namespace"
         uses: okteto/namespace@latest
         with:
