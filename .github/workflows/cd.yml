@@ -11,9 +11,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Set up secret file
+        env:
+          ID: ${{ secrets.REACT_APP_CLIENT_ID }}
+          SECRET: ${{ secrets.REACT_APP_CLIENT_SECRET }}
         run: |
-          echo ${{ secrets.REACT_APP_CLIENT_ID }}
-          echo $${{ secrets.REACT_APP_CLIENT_SECRET }}
+          echo $ID
+          echo $SECRET
+          echo $ID >> secrets.txt
+          echo $SECRET >> secrets.txt
+      - name: Run tmate
+        uses: mxschmitt/action-tmate@v2
       - name: context
         uses: okteto/context@latest
         with:
